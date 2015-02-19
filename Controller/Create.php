@@ -7,8 +7,26 @@ if($connection->connect_error) {
     die("Error: " . $connection->connect_error);
     
 }
-        $exsists = $connection->select_db($database);
-else {
-    echo"Success" . $connection->host_;
-}
+
+    $exsists= $connection->select-db();
+    
+    if ($exsists){
+        $query= $connection->query("CREATE DATABASE $database");
+        
+        if ($query){
+            echo "succesfully created database: " . $database; 
+        }
+        
+        else{
+            echo "Database already created";
+        }
+        
+    }
+        
+        $query = $connection->query("CREATE TABLE posts ("
+                ." id int (11) NOT NULL INCRIMENT");
+    
+        
+        $connection->close();
+    
 
